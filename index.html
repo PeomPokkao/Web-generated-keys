@@ -1,0 +1,38 @@
+<html>
+<body style="background:black; color:white; text-align:center; margin-top:100px;">
+
+<h2>Gen Key</h2>
+
+<div id="keyBox"></div>
+
+<br>
+
+<button onclick="genKey()">Gen Key</button>
+<button onclick="copyKey()">Copy</button>
+
+<script>
+let key = "";
+
+function randomText(len){
+    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let result = "";
+    for(let i=0;i<len;i++){
+        result += chars[Math.floor(Math.random()*chars.length)];
+    }
+    return result;
+}
+
+function genKey(){
+    key = "UPPERCUT-FREE-" + randomText(4) + "-" + randomText(4);
+    document.getElementById("keyBox").innerText = key;
+}
+
+function copyKey(){
+    if(key==""){ alert("ยังไม่มี key"); return; }
+    navigator.clipboard.writeText(key);
+    alert("copy แล้ว");
+}
+</script>
+
+</body>
+</html>
